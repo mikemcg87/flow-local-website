@@ -283,6 +283,36 @@ function initPerformanceOptimizations() {
 }
 
 // ============================================================================
+// PRIVACY POLICY MODAL
+// ============================================================================
+
+function initPrivacyModal() {
+  const privacyToggle = document.getElementById('privacy-toggle');
+  const privacyModal = document.getElementById('privacy-modal');
+  const privacyClose = document.getElementById('privacy-close');
+
+  if (!privacyToggle || !privacyModal || !privacyClose) return;
+
+  privacyToggle.addEventListener('click', (event) => {
+    event.preventDefault();
+    privacyModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+
+  privacyClose.addEventListener('click', () => {
+    privacyModal.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
+  privacyModal.addEventListener('click', (event) => {
+    if (event.target === privacyModal) {
+      privacyModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+// ============================================================================
 // INITIALIZATION
 // ============================================================================
 
@@ -298,6 +328,7 @@ function init() {
   initDemoPanel();
   initSmoothScroll();
   initDemoButtons();
+  initPrivacyModal();
   handleResize();
   initPerformanceOptimizations();
 
