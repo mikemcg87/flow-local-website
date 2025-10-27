@@ -191,7 +191,6 @@ function initDemoButtons() {
 
   demoButtons.forEach(button => {
     const icon = button.querySelector('.demo-icon, .demo-icon-large');
-    const isVoiceButton = button.classList.contains('demo-voice');
 
     button.addEventListener('mouseenter', () => {
       if (!icon || prefersReducedMotion.matches) return;
@@ -206,7 +205,6 @@ function initDemoButtons() {
     button.addEventListener('click', (event) => {
       event.preventDefault();
 
-      // Create ripple effect
       const rect = button.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height);
       const ripple = document.createElement('span');
@@ -233,23 +231,8 @@ function initDemoButtons() {
         complete: () => ripple.remove()
       });
 
-      // Handle voice button clicks by triggering GHL widget
-      if (isVoiceButton) {
-        console.log('🎤 Triggering GHL WebVoice widget...');
-        // Trigger the GHL widget if it's loaded
-        if (window.ghlInit && typeof window.ghlInit === 'function') {
-          window.ghlInit();
-        } else if (window.ghlChat) {
-          window.ghlChat.open();
-        } else {
-          console.log('GHL Widget not yet loaded, opening fallback...');
-          // Fallback if widget hasn't loaded yet
-          window.open('https://www.flow-local.com', '_blank');
-        }
-      } else {
-        console.log('Flow Local demo button clicked:', button.textContent.trim());
-        alert(`Flow Local demo via ${button.textContent.trim()}\n\n${pricingMessage}\n\n(Replace this alert with the live demo link.)`);
-      }
+      console.log('Flow Local demo button clicked:', button.textContent.trim());
+      alert(`Flow Local demo via ${button.textContent.trim()}\n\n${pricingMessage}\n\n(Replace this alert with the live demo link.)`);
     });
   });
 }
