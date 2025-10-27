@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Flow Local - AI communication for local businesses. Never miss a lead again with 24/7 instant responses.">
+  <title>Flow Local - AI Communication for Local Businesses</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- Intro Sequence (Logo Animation) -->
+  <div id="intro" class="intro-overlay">
+    <div class="intro-logo-container">
+      <svg id="intro-logo" viewBox="0 0 375 375" xmlns="http://www.w3.org/2000/svg">
+        <!-- Flow Local Logo -->
+        <path fill="currentColor" d="M 288.14 261.71 L 288.14 275.46 L 201.08 275.46 L 201.08 24.36 C 196.53 23.98 191.95 23.79 187.31 23.79 C 97.14 23.77 23.77 97.14 23.77 187.32 C 23.77 236.73 45.79 281.07 80.52 311.08 L 80.52 110.52 L 167.58 110.52 L 167.58 124.26 L 94.27 124.26 L 94.27 332.59 C 89.54 329.55 84.95 326.29 80.52 322.78 C 75.23 318.60 70.18 314.10 65.36 309.28 C 49.52 293.44 37.09 275.00 28.40 254.46 C 19.41 233.20 14.85 210.60 14.85 187.32 C 14.85 164.04 19.41 141.45 28.40 120.18 C 37.09 99.65 49.52 81.20 65.36 65.36 C 81.20 49.52 99.64 37.09 120.18 28.40 C 141.45 19.41 164.04 14.85 187.32 14.85 C 191.95 14.85 196.53 15.03 201.09 15.39 C 205.70 15.76 210.29 16.29 214.84 17.02 L 214.84 261.71 Z M 346.25 120.18 C 337.55 99.65 325.13 81.20 309.28 65.36 C 293.44 49.52 275.00 37.09 254.46 28.40 C 250.46 26.70 246.42 25.18 242.33 23.80 C 237.79 22.27 233.21 20.95 228.58 19.80 L 228.58 247.96 L 301.89 247.96 L 301.89 275.45 L 315.64 275.45 L 315.64 234.21 L 242.33 234.21 L 242.33 33.30 C 305.53 55.94 350.87 116.43 350.87 187.32 C 350.87 277.49 277.50 350.87 187.33 350.87 C 164.04 350.87 141.86 345.97 121.77 337.15 L 121.77 213.60 L 181.34 213.60 L 181.34 172.36 L 121.76 172.36 L 121.76 151.75 L 195.07 151.75 L 195.07 110.52 L 181.33 110.52 L 181.33 138.01 L 108.02 138.01 L 108.02 186.12 L 167.58 186.12 L 167.58 199.86 L 108.02 199.86 L 108.02 340.52 C 111.98 342.58 116.04 344.48 120.18 346.23 C 120.70 346.45 121.24 346.68 121.76 346.88 C 142.57 355.44 164.61 359.78 187.32 359.78 C 210.60 359.78 233.20 355.22 254.46 346.22 C 274.99 337.53 293.44 325.10 309.28 309.26 C 325.13 293.41 337.55 274.98 346.25 254.43 C 355.23 233.17 359.81 210.58 359.81 187.29 C 359.79 164.04 355.23 141.45 346.25 120.18 Z"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="header" class="header">
+    <div class="header-content">
+      <div class="header-logo">
+        <svg id="header-logo" viewBox="0 0 375 375" xmlns="http://www.w3.org/2000/svg">
+          <!-- Original Flow Local Logo -->
+          <path fill="currentColor" d="M 288.14 261.71 L 288.14 275.46 L 201.08 275.46 L 201.08 24.36 C 196.53 23.98 191.95 23.79 187.31 23.79 C 97.14 23.77 23.77 97.14 23.77 187.32 C 23.77 236.73 45.79 281.07 80.52 311.08 L 80.52 110.52 L 167.58 110.52 L 167.58 124.26 L 94.27 124.26 L 94.27 332.59 C 89.54 329.55 84.95 326.29 80.52 322.78 C 75.23 318.60 70.18 314.10 65.36 309.28 C 49.52 293.44 37.09 275.00 28.40 254.46 C 19.41 233.20 14.85 210.60 14.85 187.32 C 14.85 164.04 19.41 141.45 28.40 120.18 C 37.09 99.65 49.52 81.20 65.36 65.36 C 81.20 49.52 99.64 37.09 120.18 28.40 C 141.45 19.41 164.04 14.85 187.32 14.85 C 191.95 14.85 196.53 15.03 201.09 15.39 C 205.70 15.76 210.29 16.29 214.84 17.02 L 214.84 261.71 Z M 346.25 120.18 C 337.55 99.65 325.13 81.20 309.28 65.36 C 293.44 49.52 275.00 37.09 254.46 28.40 C 250.46 26.70 246.42 25.18 242.33 23.80 C 237.79 22.27 233.21 20.95 228.58 19.80 L 228.58 247.96 L 301.89 247.96 L 301.89 275.45 L 315.64 275.45 L 315.64 234.21 L 242.33 234.21 L 242.33 33.30 C 305.53 55.94 350.87 116.43 350.87 187.32 C 350.87 277.49 277.50 350.87 187.33 350.87 C 164.04 350.87 141.86 345.97 121.77 337.15 L 121.77 213.60 L 181.34 213.60 L 181.34 172.36 L 121.76 172.36 L 121.76 151.75 L 195.07 151.75 L 195.07 110.52 L 181.33 110.52 L 181.33 138.01 L 108.02 138.01 L 108.02 186.12 L 167.58 186.12 L 167.58 199.86 L 108.02 199.86 L 108.02 340.52 C 111.98 342.58 116.04 344.48 120.18 346.23 C 120.70 346.45 121.24 346.68 121.76 346.88 C 142.57 355.44 164.61 359.78 187.32 359.78 C 210.60 359.78 233.20 355.22 254.46 346.22 C 274.99 337.53 293.44 325.10 309.28 309.26 C 325.13 293.41 337.55 274.98 346.25 254.43 C 355.23 233.17 359.81 210.58 359.81 187.29 C 359.79 164.04 355.23 141.45 346.25 120.18 Z"/>
+        </svg>
+      </div>
+      <span class="header-text">Flow Local</span>
+    </div>
+  </header>
+
+  <!-- Demo CTA Panel -->
+  <aside id="demo-panel" class="demo-panel">
+    <button id="demo-toggle" class="demo-toggle" aria-label="Toggle demo panel" aria-expanded="false">
+      <span class="demo-toggle-icon">→</span>
+    </button>
+    <div class="demo-content">
+      <h3 class="demo-title">Test Flow Local (£300 / £450 tiers)</h3>
+      <p class="demo-subtext">Professional £300/mo (setup waived for the first 10 Belfast businesses) or Premium £450/mo with unlimited AI included. Pick a channel to try the assistant now.</p>
+      <div class="demo-buttons">
+        <a href="#whatsapp" class="demo-button demo-whatsapp">
+          <svg class="demo-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+        <a href="#messenger" class="demo-button demo-messenger">
+          <svg class="demo-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111C24 4.975 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/>
+          </svg>
+          <span>Messenger</span>
+        </a>
+        <a href="#instagram" class="demo-button demo-instagram">
+          <svg class="demo-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+          </svg>
+          <span>Instagram</span>
+        </a>
+        <a href="#voice" class="demo-button demo-voice">
+          <svg class="demo-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+          </svg>
+          <span>Voice Call</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="main">
+    <!-- Section 1: Hero -->
+    <section class="section section-hero" data-section="1">
+      <div class="section-content">
+        <h1 class="hero-headline">
+          You're already doing<br>
+          <span class="hero-highlight">everything.</span>
+        </h1>
+        <p class="hero-subhead">
+          Quoting jobs. Delivering the work. Juggling customers, staff, socials, and admin.
+          <strong>But who's replying when someone DMs at 9:30pm?</strong>
+        </p>
+        <p class="hero-subhead">
+          Who's chasing that customer who said "maybe next week"?
+        </p>
+        <p class="hero-subhead hero-subhead-pricing">
+          Professional £300/mo or Premium £450/mo. Setup fee waived for the first 10 Belfast businesses.
+        </p>
+        <p class="hero-subhead">
+          One extra job typically pays for two months of coverage.
+        </p>
+        <p class="hero-subhead">
+          You can't do it all — <strong>and now you don't have to.</strong>
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 2: The Problem -->
+    <section class="section section-cost" data-section="2">
+      <div class="section-content">
+        <h2 class="section-headline">What actually happens when someone messages you?</h2>
+        <p class="section-text">
+          You're mid-job. Driving. Or just trying to relax.
+        </p>
+        <p class="section-text">
+          And then comes the message:
+        </p>
+        <p class="section-text">
+          "Hi, are you free next week?"<br>
+          "Do you have a price list?"<br>
+          "Can I book in for Tuesday?"
+        </p>
+        <p class="section-text-emphasis">
+          ⏳ If you don't reply fast, they're gone.
+        </p>
+        <p class="section-text">
+          📉 Another lead lost. Another booking that could've been yours.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3: The Solution -->
+    <section class="section section-solution" data-section="3">
+      <div class="section-content">
+        <h2 class="section-headline">💬 This assistant steps in instantly.</h2>
+        <p class="section-text">
+          It replies <strong>right away</strong> — answers questions, shares prices, collects details, and can <strong>even help book them in, 24/7</strong>.
+        </p>
+        <p class="section-text">
+          All while you're doing what you need to do.
+        </p>
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="feature-icon">✅</div>
+            <h3 class="feature-title">Facebook & Instagram</h3>
+            <p class="feature-text">Never miss a DM again</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">✅</div>
+            <h3 class="feature-title">WhatsApp & SMS</h3>
+            <p class="feature-text">Text messages handled instantly</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">✅</div>
+            <h3 class="feature-title">Website Chat</h3>
+            <p class="feature-text">Capture leads on your site</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">✅</div>
+            <h3 class="feature-title">Phone Calls</h3>
+            <p class="feature-text">Even answers voice calls for you</p>
+          </div>
+        </div>
+        <p class="section-text-emphasis">
+          You stay focused on your work — no app to learn, no one to train, just an <strong>extra pair of hands</strong> when you need it.
+        </p>
+        <p class="section-text">
+          This isn't about replacing you. It's about making sure opportunities don't fall through the cracks while you're running a business.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 4: Pricing -->
+    <section class="section section-pricing" data-section="4">
+      <div class="section-content">
+        <span class="pricing-badge">Setup fee waived for first 10 Belfast businesses</span>
+        <h2 class="section-headline">Transparent pricing built for Belfast trades.</h2>
+        <p class="section-text">Choose the tier that fits your message volume. Both plans include onboarding, GoHighLevel access, and ongoing support.</p>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <h3 class="pricing-title">Professional</h3>
+            <p class="pricing-price">£300 <span>/month</span></p>
+            <p class="pricing-meta">Best for trades and home services handling up to 1,200 messages each month.</p>
+            <ul class="pricing-list">
+              <li>AI assistant trained on your business</li>
+              <li>1,200 messages/month included</li>
+              <li>Facebook, Instagram, Web Chat included</li>
+              <li>Web Voice included</li>
+              <li>GoHighLevel sub-account access</li>
+              <li>Setup in 1–7 days + ongoing optimisation</li>
+            </ul>
+            <p class="pricing-note">WhatsApp, SMS, Phone Calls available as add-ons. Contact us for pricing.</p>
+
+          </article>
+          <article class="pricing-card pricing-card-premium">
+            <div class="pricing-flag">Unlimited AI</div>
+            <h3 class="pricing-title">Premium</h3>
+            <p class="pricing-price">£450 <span>/month</span></p>
+            <p class="pricing-meta">Best for high-volume teams like gyms, salons, and busy service businesses.</p>
+            <ul class="pricing-list">
+              <li>Everything in Professional</li>
+              <li>Unlimited AI conversations</li>
+              <li>WhatsApp included</li>
+              <li>Priority support + monthly optimisation call</li>
+              <li>Protects margins when message volume spikes</li>
+            </ul>
+            <p class="pricing-note">SMS, Phone Calls available as add-ons. Contact us for pricing.</p>
+
+          </article>
+        </div>
+        <p class="pricing-footnote">Most trades tell us one extra job pays for two months. Monitor usage monthly and upgrade to Premium if conversations surge.</p>
+      </div>
+    </section>
+
+    <!-- Section 5: Demo CTA -->
+    <section class="section section-demo" data-section="5">
+      <div class="section-content">
+        <h2 class="section-headline">This isn't a pitch — it's a live assistant you can test right now.</h2>
+        <p class="section-text">
+          Ask it real questions, see how it responds, and picture it working for your business.
+        </p>
+        <p class="section-text-emphasis">
+          TRY IT NOW - TOTALLY FREE
+        </p>
+        <p class="section-text">
+          Choose how you want to test it:
+        </p>
+        <div class="demo-cta-large">
+          <div class="demo-buttons-large">
+            <a href="https://wa.me/447401091016" class="demo-button-large demo-whatsapp" target="_blank" rel="noopener">
+              <svg class="demo-icon-large" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              <span>💬 WhatsApp</span>
+            </a>
+            <a href="https://m.me/flowlocalni" class="demo-button-large demo-messenger" target="_blank" rel="noopener">
+              <svg class="demo-icon-large" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111C24 4.975 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8l3.131 3.259L19.752 8l-6.561 6.963z"/>
+              </svg>
+              <span>Messenger</span>
+            </a>
+            <a href="https://instagram.com/flowlocalni" class="demo-button-large demo-instagram" target="_blank" rel="noopener">
+              <svg class="demo-icon-large" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+              </svg>
+              <span>Instagram DMs</span>
+            </a>
+            <a href="tel:+447700145928" class="demo-button-large demo-voice">
+              <svg class="demo-icon-large" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+              </svg>
+              <span>📞 Voice Call</span>
+            </a>
+          </div>
+        </div>
+        <div class="social-proof">
+          <p class="section-text">
+            Message the assistant and test it for yourself.<br>
+            <strong>(No pressure, just give it a go!)</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
