@@ -130,8 +130,8 @@
   transform: translateY(-50%);
   width: 44px;
   height: 64px;
-  background: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.5);
+  background: #2f2f45;
+  border: 1px solid rgba(16, 185, 129, 0.4);
   border-right: none;
   border-radius: 16px 0 0 16px;
   color: #ffffff;
@@ -149,8 +149,8 @@
 }
 
 .demo-toggle:hover {
-  background: #059669;
-  border-color: rgba(16, 185, 129, 0.8);
+  background: #3f3f5a;
+  border-color: rgba(16, 185, 129, 0.6);
   box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
 }
 
@@ -269,17 +269,28 @@
     width: 64px;
     height: 48px;
     border-radius: 16px 16px 0 0;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.4);
     border-bottom: none;
     background: #2f2f45;
+    box-shadow: 0 -4px 12px rgba(16, 185, 129, 0.3);
   }
 
   .demo-panel:not(.open) .demo-toggle {
     transform: translate(-50%, -70%);
   }
 
-  .demo-toggle-icon {
-    transform: rotate(180deg);
+  .demo-toggle:hover {
+    background: #3f3f5a;
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 -6px 16px rgba(16, 185, 129, 0.4);
+  }
+
+  .demo-toggle-icon-arrow {
+    transform: rotate(270deg);
+  }
+
+  .demo-panel.open .demo-toggle-icon-arrow {
+    transform: rotate(90deg);
   }
 
   .demo-panel.open .demo-toggle-icon {
