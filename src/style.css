@@ -139,8 +139,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.65rem;
+  font-weight: 700;
   transition: background 0.3s ease, border-color 0.3s ease;
+  padding: 0;
 }
 
 .demo-toggle:hover {
@@ -148,12 +152,27 @@
   border-color: rgba(255, 255, 255, 0.16);
 }
 
+.demo-toggle-icon-text {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.demo-toggle-icon-arrow {
+  font-size: 1.35rem;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(180deg);
+}
+
 .demo-toggle-icon {
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   transform: rotate(180deg);
 }
 
-.demo-panel.open .demo-toggle-icon {
+.demo-panel.open .demo-toggle-icon,
+.demo-panel.open .demo-toggle-icon-arrow {
   transform: rotate(0deg);
 }
 
