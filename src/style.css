@@ -489,6 +489,33 @@
   letter-spacing: 0.08em;
 }
 
+.pricing-offer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.pricing-offer-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #737373;
+  margin-right: 0.75rem;
+}
+
+.offer-highlight {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
 .pricing-grid {
   display: grid;
   gap: 2rem;
