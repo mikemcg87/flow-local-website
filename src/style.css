@@ -727,6 +727,62 @@
   font-weight: 600;
 }
 
+/* About Section */
+.section-about {
+  background: linear-gradient(135deg, rgba(0, 102, 204, 0.05), rgba(16, 185, 129, 0.05));
+  border-top: 1px solid rgba(0, 102, 204, 0.2);
+  border-bottom: 1px solid rgba(0, 102, 204, 0.2);
+}
+
+.about-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(0, 102, 204, 0.25);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-top: 2rem;
+}
+
+.about-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #d4d4d4;
+  margin-bottom: 1.5rem;
+}
+
+.about-text:last-of-type {
+  margin-bottom: 0;
+}
+
+.about-text-cta {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #a3a3a3;
+  font-size: 1rem;
+}
+
+.about-link {
+  color: #0066cc;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.about-link:hover {
+  color: #10b981;
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .about-card {
+    padding: 2rem;
+  }
+
+  .about-text {
+    font-size: 1rem;
+  }
+}
+
 /* Footer */
 .footer {
   background: rgba(0, 0, 0, 0.5);
