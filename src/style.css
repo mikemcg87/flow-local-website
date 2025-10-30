@@ -785,6 +785,7 @@
 @media (max-width: 768px) {
   .pricing-card {
     padding: 2.25rem 1.75rem;
+    padding-top: 5.5rem;
   }
 }
 
