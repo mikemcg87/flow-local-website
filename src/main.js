@@ -288,6 +288,80 @@ function initDemoButtons() {
 }
 
 // ============================================================================
+// COOKIE CONSENT
+// ============================================================================
+
+function initCookieConsent() {
+  const cookieBanner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const rejectBtn = document.getElementById('cookie-reject');
+  const COOKIE_CONSENT_KEY = 'flow-local-cookie-consent';
+
+  // Check if user has already made a choice
+  const userConsent = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+  if (userConsent === null) {
+    // Show the banner if no prior decision
+    setTimeout(() => {
+      if (cookieBanner) {
+        cookieBanner.style.display = 'block';
+      }
+    }, 2000); // Show after 2 seconds
+  } else if (userConsent === 'accepted') {
+    // Load tracking scripts if previously accepted
+    loadAnalyticsScripts();
+  }
+
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted');
+      if (cookieBanner) {
+        cookieBanner.style.display = 'none';
+      }
+      loadAnalyticsScripts();
+    });
+  }
+
+  if (rejectBtn) {
+    rejectBtn.addEventListener('click', () => {
+      localStorage.setItem(COOKIE_CONSENT_KEY, 'rejected');
+      if (cookieBanner) {
+        cookieBanner.style.display = 'none';
+      }
+    });
+  }
+}
+
+function loadAnalyticsScripts() {
+  // Load Google Analytics
+  const gaScript = document.createElement('script');
+  gaScript.async = true;
+  gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-MHTNLMYV7K';
+  document.head.appendChild(gaScript);
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MHTNLMYV7K');
+
+  // Load Meta Pixel
+  const fbqScript = document.createElement('script');
+  fbqScript.innerHTML = `
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '3674064329567447');
+    fbq('track', 'PageView');
+  `;
+  document.head.appendChild(fbqScript);
+}
+
+// ============================================================================
 // PRIVACY POLICY MODAL
 // ============================================================================
 
@@ -466,6 +540,7 @@ function init() {
 
   console.log('🚀 Flow Local - Initializing...');
 
+  initCookieConsent();
   initIntroSequence();
   initDemoPanel();
   initSmoothScroll();
