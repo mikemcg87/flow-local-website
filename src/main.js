@@ -31,6 +31,8 @@ function finalizeIntro(introOverlay, header) {
 function initIntroSequence() {
   const introOverlay = document.getElementById('intro');
   const header = document.getElementById('header');
+  const introLogo = document.getElementById('intro-logo');
+  const path = introLogo?.querySelector('path');
 
   if (!introOverlay) {
     finalizeIntro(null, header);
@@ -44,35 +46,86 @@ function initIntroSequence() {
 
   anime.set('.intro-logo-container', { opacity: 0, scale: 0.85 });
 
-  anime.timeline({ easing: 'easeOutQuad' })
-    .add({
-      targets: '.intro-logo-container',
-      opacity: [0, 1],
-      scale: [0.85, 1],
-      duration: 520
-    })
-    .add({
-      targets: '#intro-logo',
-      scale: [1, 1.06],
-      duration: 320,
-      direction: 'alternate',
-      easing: 'easeInOutSine',
-      loop: 2
-    })
-    .add({
-      targets: '.intro-logo-container',
-      scale: [1, 0.92],
-      opacity: [1, 0],
-      duration: 260,
+  // Set up the path for stroke animation (drawing effect)
+  let pathLength = 0;
+  if (path) {
+    pathLength = path.getTotalLength();
+    anime.set(path, {
+      strokeDasharray: pathLength,
+      strokeDashoffset: pathLength,
+      strokeWidth: 6,
+      stroke: 'currentColor',
+      fill: 'none'
+    });
+  }
+
+  const timeline = anime.timeline({ easing: 'easeOutQuad' });
+
+  // Fade in container
+  timeline.add({
+    targets: '.intro-logo-container',
+    opacity: [0, 1],
+    scale: [0.85, 1],
+    duration: 300
+  });
+
+  // Animate the stroke drawing (the "fuse being lit" effect)
+  if (path && pathLength > 0) {
+    timeline.add({
+      targets: path,
+      strokeDashoffset: [pathLength, 0],
+      duration: 4800,
       easing: 'easeInOutQuad'
-    })
-    .add({
-      targets: introOverlay,
-      opacity: [1, 0],
-      duration: 360,
-      easing: 'easeInOutQuad',
-      complete: () => finalizeIntro(introOverlay, header)
-    }, '-=200');
+    }, '-=300');
+
+    // Build up glow while drawing
+    timeline.add({
+      targets: '#intro-logo',
+      filter: [
+        'drop-shadow(0 0 8px rgba(0, 102, 204, 0.3))',
+        'drop-shadow(0 0 25px rgba(0, 102, 204, 0.5))',
+        'drop-shadow(0 0 50px rgba(0, 102, 204, 0.8))',
+        'drop-shadow(0 0 60px rgba(0, 102, 204, 1))'
+      ],
+      duration: 4800,
+      easing: 'easeInOutQuad'
+    }, '-=4800');
+  }
+
+  // Transition to fill (remove stroke, keep glow)
+  timeline.add({
+    targets: path,
+    strokeWidth: [6, 0],
+    fill: 'currentColor',
+    duration: 300,
+    easing: 'easeOutQuad'
+  });
+
+  // Pulse effect
+  timeline.add({
+    targets: '#intro-logo',
+    scale: [1, 1.06],
+    duration: 320,
+    direction: 'alternate',
+    easing: 'easeInOutSine',
+    loop: 2
+  });
+
+  // Fade out
+  timeline.add({
+    targets: '.intro-logo-container',
+    scale: [1, 0.92],
+    opacity: [1, 0],
+    duration: 260,
+    easing: 'easeInOutQuad'
+  })
+  .add({
+    targets: introOverlay,
+    opacity: [1, 0],
+    duration: 360,
+    easing: 'easeInOutQuad',
+    complete: () => finalizeIntro(introOverlay, header)
+  }, '-=200');
 }
 
 // ============================================================================
@@ -238,6 +291,128 @@ function initDemoButtons() {
 }
 
 // ============================================================================
+// PRIVACY POLICY MODAL
+// ============================================================================
+
+function initPrivacyModal() {
+  const privacyToggle = document.getElementById('privacy-toggle');
+  const privacyModal = document.getElementById('privacy-modal');
+  const privacyClose = document.getElementById('privacy-close');
+
+  if (!privacyToggle || !privacyModal || !privacyClose) return;
+
+  privacyToggle.addEventListener('click', (event) => {
+    event.preventDefault();
+    privacyModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  });
+
+  privacyClose.addEventListener('click', () => {
+    privacyModal.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
+  privacyModal.addEventListener('click', (event) => {
+    if (event.target === privacyModal) {
+      privacyModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+// ============================================================================
+// BOOKING MODAL
+// ============================================================================
+
+function initBookingModal() {
+  const bookingModal = document.getElementById('booking-modal');
+  const bookingClose = document.getElementById('booking-close');
+  const bookCallBtn = document.getElementById('book-call-btn');
+  const pricingBookBtn = document.getElementById('pricing-book-btn');
+
+  const addonsModal = document.getElementById('addons-modal');
+  const addonsClose = document.getElementById('addons-close');
+  const viewAddonsPro = document.getElementById('view-addons-pro');
+  const viewAddonsUnlimited = document.getElementById('view-addons-unlimited');
+
+  if (!bookingModal || !bookingClose) {
+    console.warn('Booking modal or close button not found');
+    return;
+  }
+
+  const openBookingModal = () => {
+    bookingModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeBookingModal = () => {
+    bookingModal.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  const openAddonsModal = () => {
+    addonsModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeAddonsModal = () => {
+    addonsModal.style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  // Booking modal handlers
+  if (bookCallBtn) {
+    bookCallBtn.addEventListener('click', openBookingModal);
+  }
+
+  if (pricingBookBtn) {
+    pricingBookBtn.addEventListener('click', openBookingModal);
+  }
+
+  bookingClose.addEventListener('click', closeBookingModal);
+
+  // Add-ons modal handlers
+  if (viewAddonsPro) {
+    viewAddonsPro.addEventListener('click', openAddonsModal);
+  }
+
+  if (viewAddonsUnlimited) {
+    viewAddonsUnlimited.addEventListener('click', openAddonsModal);
+  }
+
+  if (addonsClose) {
+    addonsClose.addEventListener('click', closeAddonsModal);
+  }
+
+  // Close when clicking outside the modal
+  bookingModal.addEventListener('click', (event) => {
+    if (event.target === bookingModal) {
+      closeBookingModal();
+    }
+  });
+
+  if (addonsModal) {
+    addonsModal.addEventListener('click', (event) => {
+      if (event.target === addonsModal) {
+        closeAddonsModal();
+      }
+    });
+  }
+
+  // Close on escape key
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      if (bookingModal.style.display !== 'none') {
+        closeBookingModal();
+      }
+      if (addonsModal && addonsModal.style.display !== 'none') {
+        closeAddonsModal();
+      }
+    }
+  });
+}
+
+// ============================================================================
 // RESPONSIVE HANDLING
 // ============================================================================
 
@@ -283,36 +458,6 @@ function initPerformanceOptimizations() {
 }
 
 // ============================================================================
-// PRIVACY POLICY MODAL
-// ============================================================================
-
-function initPrivacyModal() {
-  const privacyToggle = document.getElementById('privacy-toggle');
-  const privacyModal = document.getElementById('privacy-modal');
-  const privacyClose = document.getElementById('privacy-close');
-
-  if (!privacyToggle || !privacyModal || !privacyClose) return;
-
-  privacyToggle.addEventListener('click', (event) => {
-    event.preventDefault();
-    privacyModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  });
-
-  privacyClose.addEventListener('click', () => {
-    privacyModal.style.display = 'none';
-    document.body.style.overflow = '';
-  });
-
-  privacyModal.addEventListener('click', (event) => {
-    if (event.target === privacyModal) {
-      privacyModal.style.display = 'none';
-      document.body.style.overflow = '';
-    }
-  });
-}
-
-// ============================================================================
 // INITIALIZATION
 // ============================================================================
 
@@ -329,6 +474,7 @@ function init() {
   initSmoothScroll();
   initDemoButtons();
   initPrivacyModal();
+  initBookingModal();
   handleResize();
   initPerformanceOptimizations();
 

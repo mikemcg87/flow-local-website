@@ -39,6 +39,7 @@
   z-index: 9999;
   opacity: 1;
   transition: opacity 0.6s ease;
+  perspective: 1000px;
 }
 
 .intro-overlay.fade-out {
@@ -49,6 +50,7 @@
 .intro-logo-container {
   width: 200px;
   height: 200px;
+  transform-style: preserve-3d;
 }
 
 #intro-logo {
@@ -56,6 +58,83 @@
   height: 100%;
   color: #ffffff;
   filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.5));
+  transition: filter 0.6s ease;
+}
+
+/* Glow animation for intro logo */
+@keyframes glow-pulse {
+  0% {
+    filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 50px rgba(0, 102, 204, 0.9)) drop-shadow(0 0 80px rgba(0, 102, 204, 0.6));
+  }
+  100% {
+    filter: drop-shadow(0 0 30px rgba(0, 102, 204, 0.5));
+  }
+}
+
+/* Pulse animation for demo button */
+@keyframes demo-pulse {
+  0%, 100% {
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Booking Modal */
+.booking-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+  padding: 1rem;
+}
+
+.booking-modal.hidden {
+  display: none;
+}
+
+.booking-modal-content {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.booking-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.booking-close:hover {
+  opacity: 0.7;
 }
 
 /* Header */
@@ -115,6 +194,19 @@
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
 }
 
+/* Desktop connector line */
+.demo-panel::before {
+  content: '';
+  position: absolute;
+  right: -32px;
+  top: 50%;
+  width: 32px;
+  height: 2px;
+  background: rgba(16, 185, 129, 0.4);
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
 .demo-panel.ready {
   opacity: 1;
 }
@@ -125,13 +217,13 @@
 
 .demo-toggle {
   position: absolute;
-  left: -44px;
+  left: -56px;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 64px;
-  background: #2f2f45;
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  width: 56px;
+  height: 80px;
+  background: linear-gradient(135deg, #1f2937, #111827);
+  border: 2px solid rgba(16, 185, 129, 0.6);
   border-right: none;
   border-radius: 16px 0 0 16px;
   color: #ffffff;
@@ -140,18 +232,20 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.65rem;
+  gap: 0.35rem;
+  font-size: 0.75rem;
   font-weight: 700;
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   padding: 0;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: demo-pulse 2s ease-in-out infinite;
 }
 
 .demo-toggle:hover {
-  background: #3f3f5a;
-  border-color: rgba(16, 185, 129, 0.6);
-  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-color: rgba(16, 185, 129, 1);
+  box-shadow: 0 8px 28px rgba(16, 185, 129, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: demo-pulse 1s ease-in-out infinite;
 }
 
 .demo-toggle-icon-text {
@@ -258,6 +352,17 @@
     transform: translate(-50%, calc(100% - 56px));
   }
 
+  /* Mobile connector line (vertical) */
+  .demo-panel::before {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -32px;
+    width: 2px;
+    height: 32px;
+    transform: translateX(-50%);
+  }
+
   .demo-panel.open {
     transform: translate(-50%, 0);
   }
@@ -266,13 +371,14 @@
     left: 50%;
     top: 0;
     transform: translate(-50%, -100%);
-    width: 64px;
-    height: 48px;
+    width: 72px;
+    height: 56px;
     border-radius: 16px 16px 0 0;
-    border: 1px solid rgba(16, 185, 129, 0.4);
+    border: 2px solid rgba(16, 185, 129, 0.6);
     border-bottom: none;
-    background: #2f2f45;
-    box-shadow: 0 -4px 12px rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, #1f2937, #111827);
+    box-shadow: 0 -6px 20px rgba(16, 185, 129, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    animation: demo-pulse 2s ease-in-out infinite;
   }
 
   .demo-panel:not(.open) .demo-toggle {
@@ -562,8 +668,8 @@
 
 .pricing-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(80, 90, 100, 0.35));
+  border: 1px solid rgba(200, 210, 220, 0.15);
   border-radius: 24px;
   padding: 2.75rem 2.5rem;
   display: flex;
