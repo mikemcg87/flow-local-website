@@ -74,7 +74,7 @@ function initIntroSequence() {
     timeline.add({
       targets: path,
       strokeDashoffset: [pathLength, 0],
-      duration: 4800,
+      duration: 2800,
       easing: 'easeInOutQuad'
     }, '-=300');
 
@@ -87,9 +87,9 @@ function initIntroSequence() {
         'drop-shadow(0 0 50px rgba(0, 102, 204, 0.8))',
         'drop-shadow(0 0 60px rgba(0, 102, 204, 1))'
       ],
-      duration: 4800,
+      duration: 2800,
       easing: 'easeInOutQuad'
-    }, '-=4800');
+    }, '-=2800');
   }
 
   // Transition to fill (remove stroke, keep glow)
@@ -97,7 +97,7 @@ function initIntroSequence() {
     targets: path,
     strokeWidth: [6, 0],
     fill: 'currentColor',
-    duration: 300,
+    duration: 200,
     easing: 'easeOutQuad'
   });
 
@@ -105,7 +105,7 @@ function initIntroSequence() {
   timeline.add({
     targets: '#intro-logo',
     scale: [1, 1.06],
-    duration: 320,
+    duration: 200,
     direction: 'alternate',
     easing: 'easeInOutSine',
     loop: 2
@@ -116,16 +116,16 @@ function initIntroSequence() {
     targets: '.intro-logo-container',
     scale: [1, 0.92],
     opacity: [1, 0],
-    duration: 260,
+    duration: 150,
     easing: 'easeInOutQuad'
   })
   .add({
     targets: introOverlay,
     opacity: [1, 0],
-    duration: 360,
+    duration: 200,
     easing: 'easeInOutQuad',
     complete: () => finalizeIntro(introOverlay, header)
-  }, '-=200');
+  }, '-=100');
 }
 
 // ============================================================================
@@ -256,8 +256,6 @@ function initDemoButtons() {
     });
 
     button.addEventListener('click', (event) => {
-      event.preventDefault();
-
       const rect = button.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height);
       const ripple = document.createElement('span');
@@ -285,7 +283,6 @@ function initDemoButtons() {
       });
 
       console.log('Flow Local demo button clicked:', button.textContent.trim());
-      alert(`Flow Local demo via ${button.textContent.trim()}\n\n${pricingMessage}\n\n(Replace this alert with the live demo link.)`);
     });
   });
 }
