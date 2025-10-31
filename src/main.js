@@ -288,6 +288,38 @@ function initDemoButtons() {
 }
 
 // ============================================================================
+// FAQ ACCORDION
+// ============================================================================
+
+function initFAQ() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach((question) => {
+    question.addEventListener('click', () => {
+      const faqItem = question.closest('.faq-item');
+      const isOpen = faqItem.classList.contains('open');
+
+      // Close all other items
+      document.querySelectorAll('.faq-item.open').forEach((item) => {
+        if (item !== faqItem) {
+          item.classList.remove('open');
+          item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Toggle current item
+      if (isOpen) {
+        faqItem.classList.remove('open');
+        question.setAttribute('aria-expanded', 'false');
+      } else {
+        faqItem.classList.add('open');
+        question.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+}
+
+// ============================================================================
 // COOKIE CONSENT
 // ============================================================================
 
@@ -502,6 +534,7 @@ function init() {
   console.log('🚀 Flow Local - Initializing...');
 
   initCookieConsent();
+  initFAQ();
   initIntroSequence();
   initDemoPanel();
   initSmoothScroll();
