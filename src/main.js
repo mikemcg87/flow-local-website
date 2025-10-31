@@ -401,11 +401,6 @@ function initBookingModal() {
   const bookCallBtn = document.getElementById('book-call-btn');
   const pricingBookBtn = document.getElementById('pricing-book-btn');
 
-  const addonsModal = document.getElementById('addons-modal');
-  const addonsClose = document.getElementById('addons-close');
-  const viewAddonsPro = document.getElementById('view-addons-pro');
-  const viewAddonsUnlimited = document.getElementById('view-addons-unlimited');
-
   if (!bookingModal || !bookingClose) {
     console.warn('Booking modal or close button not found');
     return;
@@ -421,16 +416,6 @@ function initBookingModal() {
     document.body.style.overflow = '';
   };
 
-  const openAddonsModal = () => {
-    addonsModal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeAddonsModal = () => {
-    addonsModal.style.display = 'none';
-    document.body.style.overflow = '';
-  };
-
   // Booking modal handlers
   if (bookCallBtn) {
     bookCallBtn.addEventListener('click', openBookingModal);
@@ -442,19 +427,6 @@ function initBookingModal() {
 
   bookingClose.addEventListener('click', closeBookingModal);
 
-  // Add-ons modal handlers
-  if (viewAddonsPro) {
-    viewAddonsPro.addEventListener('click', openAddonsModal);
-  }
-
-  if (viewAddonsUnlimited) {
-    viewAddonsUnlimited.addEventListener('click', openAddonsModal);
-  }
-
-  if (addonsClose) {
-    addonsClose.addEventListener('click', closeAddonsModal);
-  }
-
   // Close when clicking outside the modal
   bookingModal.addEventListener('click', (event) => {
     if (event.target === bookingModal) {
@@ -462,22 +434,11 @@ function initBookingModal() {
     }
   });
 
-  if (addonsModal) {
-    addonsModal.addEventListener('click', (event) => {
-      if (event.target === addonsModal) {
-        closeAddonsModal();
-      }
-    });
-  }
-
   // Close on escape key
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       if (bookingModal.style.display !== 'none') {
         closeBookingModal();
-      }
-      if (addonsModal && addonsModal.style.display !== 'none') {
-        closeAddonsModal();
       }
     }
   });
