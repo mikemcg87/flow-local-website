@@ -288,6 +288,23 @@ function initDemoButtons() {
 }
 
 // ============================================================================
+// HERO CTA SCROLL
+// ============================================================================
+
+function initHeroCTA() {
+  const tryDemoBtn = document.getElementById('try-demo-btn');
+
+  if (!tryDemoBtn) return;
+
+  tryDemoBtn.addEventListener('click', () => {
+    const demoSection = document.querySelector('[data-section="5"]');
+    if (demoSection) {
+      demoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+}
+
+// ============================================================================
 // FAQ ACCORDION
 // ============================================================================
 
@@ -430,7 +447,7 @@ function initPrivacyModal() {
 function initBookingModal() {
   const bookingModal = document.getElementById('booking-modal');
   const bookingClose = document.getElementById('booking-close');
-  const bookCallBtn = document.getElementById('book-call-btn');
+  const heroBookCallLink = document.getElementById('hero-book-call-link');
   const pricingBookBtn = document.getElementById('pricing-book-btn');
 
   if (!bookingModal || !bookingClose) {
@@ -449,8 +466,11 @@ function initBookingModal() {
   };
 
   // Booking modal handlers
-  if (bookCallBtn) {
-    bookCallBtn.addEventListener('click', openBookingModal);
+  if (heroBookCallLink) {
+    heroBookCallLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      openBookingModal();
+    });
   }
 
   if (pricingBookBtn) {
@@ -534,6 +554,7 @@ function init() {
   console.log('🚀 Flow Local - Initializing...');
 
   initCookieConsent();
+  initHeroCTA();
   initFAQ();
   initIntroSequence();
   initDemoPanel();
